@@ -708,7 +708,6 @@ body{background:#000}
 .hr::before{display:none}
 .hr .pround{padding:0;background:none;border:1px solid rgba(255,255,255,.18);box-shadow:0 30px 70px rgba(0,0,0,.55)}
 .hr .pround::after{content:"";position:absolute;inset:-14px;border-radius:50%;border:1px solid rgba(255,255,255,.07);pointer-events:none}
-.hr .pround::before{content:"";position:absolute;z-index:3;right:9%;bottom:9%;width:18px;height:18px;border-radius:50%;background:var(--green);border:3px solid #05060a;box-shadow:0 0 14px rgba(52,211,153,.6)}
 .hr .pround .pimg{border:0}
 @media(max-width:800px){.hero{padding:11vh 0 14vh}.hero .name{font-size:clamp(2.4rem,11.5vw,3.8rem)}}
 /* v28 no top badge, I'm = name size, slightly smaller name + about */
@@ -778,6 +777,20 @@ body{background:#000}
 #orb .ico{width:46px;height:46px}
 #orb .ico svg{width:22px;height:22px}
 #orb .ico i,#orb .lbl,#orb kbd{display:none!important}
+/* v36 internship certificate: always visible in Journey */
+.ti .cert{opacity:1;transform:none;clip-path:none;pointer-events:auto;margin-top:12px}
+.ti .cert svg{transform:none}
+/* v37 icon dock: icons only, labels + red dot on hover */
+.dock{align-items:flex-start;gap:2px;padding:12px 14px;border:1px solid rgba(255,255,255,.4);border-radius:26px;background:rgba(0,0,0,.84);-webkit-backdrop-filter:blur(18px);backdrop-filter:blur(18px);overflow:visible;transition:padding .3s,border-color .3s}
+.dock:hover{border-color:rgba(255,255,255,.22)}
+.dock a{position:relative;display:flex;flex-direction:column;align-items:center;padding:6px 11px;border-radius:14px;background:none;color:rgba(255,255,255,.62);font:600 10px "JetBrains Mono",monospace;letter-spacing:.14em;text-transform:uppercase;transform-origin:center bottom;transition:transform .25s cubic-bezier(.34,1.56,.64,1),color .2s}
+.dock a svg{width:22px;height:22px;flex:none}
+.dock a span{max-height:0;opacity:0;overflow:hidden;white-space:nowrap;margin-top:0;transition:max-height .3s,opacity .25s,margin .3s}
+.dock:hover a span,.dock:focus-within a span{max-height:16px;opacity:1;margin-top:9px}
+.dock a.on{color:#fff;background:none}
+.dock a:hover,.dock a:focus-visible{color:#fff;transform:translateY(-2px) scale(1.12)}
+.dock a:hover::after,.dock a:focus-visible::after{content:"";position:absolute;bottom:-4px;left:50%;width:5px;height:5px;margin-left:-2.5px;border-radius:50%;background:#ff4d4f}
+@media(max-width:800px){.dock{max-width:94vw;overflow-x:auto;padding:10px}.dock a{padding:6px 8px}.dock a span{display:none}}
 </style>
 </head>
 <body>
@@ -811,7 +824,7 @@ body{background:#000}
   <p class="eyebrow rv">02 · Journey</p>
   <h2 class="sp">Where I've been so far.</h2>
   <div class="tl2 rv jwrap">
-    <div class="ti"><small>Jul – Sep 2026</small><h4>Software Development Intern · Youth Dreamers Foundation</h4><p>Built Python web scrapers to collect scholarship data for a scholarship recommendation chatbot.</p></div>
+    <div class="ti"><small>Jul – Sep 2026</small><h4>Software Development Intern · Youth Dreamers Foundation</h4><p>Built Python web scrapers to collect scholarship data for a scholarship recommendation chatbot.</p><a class="cert" href="https://drive.google.com/file/d/1gCt19h08eCyzm8gl43iZagm6SVKDQM-e/view?usp=sharing" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h4"/></svg>Certificate</a></div>
     <div class="ti"><small>Ongoing</small><h4>Core Member · E-Cell, MBM University</h4><p>Organised hackathons and tech events for 50+ participants.</p></div>
     <div class="ti"><small>2024 – 2028</small><h4>B.E. Information Technology · M.B.M. University</h4><p>CGPA 8.0, with DSA, OOP, DBMS, operating systems and computer networks.</p></div>
   </div>
@@ -847,9 +860,9 @@ body{background:#000}
     <a class="flip rv" style="--c:#10b981" href="https://codolio.com/profile/hp10" target="_blank" rel="noopener"><div class="fi"><div class="ff"><span class="mono">Total solved</span><b><span data-n="1100">0</span>+</b></div><div class="fb">Problems solved across LeetCode, Codeforces, CodeChef and GeeksforGeeks. Open profile ↗</div></div></a>
   </div>
   <div class="honors rv">
-    <div class="hn"><b>AIR 32</b><span>National Entrepreneurship Challenge · E-Cell, IIT Bombay · 1,000+ teams</span><a class="cert" href="certificates/air-32.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h4"/></svg>Certificate (PDF)</a></div>
-    <div class="hn"><b>Genpact STEM Her</b><span>4-year merit-based national scholarship</span><a class="cert" href="certificates/genpact-stem-her.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h4"/></svg>Certificate (PDF)</a></div>
-    <div class="hn"><b>Indira Priyadarshini ×3</b><span>Classes 8, 10 and 12 · 95.17%, 97%, 91%</span><a class="cert" href="certificates/indira-priyadarshini.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h4"/></svg>Certificate (PDF)</a></div>
+    <div class="hn"><b>AIR 32</b><span>National Entrepreneurship Challenge · E-Cell, IIT Bombay · 1,000+ teams</span><a class="cert" href="https://drive.google.com/file/d/1h1AHD3mCLEpR8lDQ2lBOmqNaKBxVkNVf/view?usp=drive_link" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h4"/></svg>Certificate</a></div>
+    <div class="hn"><b>Genpact STEM Her</b><span>4-year merit-based national scholarship</span><a class="cert" href="https://drive.google.com/file/d/1wSXRGLHnZ4IOSOcY8Jn3U_AsZZtsoovO/view?usp=drive_link" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h4"/></svg>Certificate</a></div>
+    <div class="hn"><b>Indira Priyadarshini ×3</b><span>Classes 8, 10 and 12 · 95.17%, 97%, 91%</span><a class="cert" href="https://drive.google.com/file/d/1vJ_GLcBUNaEedIabTPfkWdKsuaJpy8uZ/view?usp=sharing" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h4"/></svg>Certificate</a></div>
   </div>
 </div></section>
 
@@ -881,7 +894,7 @@ body{background:#000}
   </div>
 </div></div>
 
-<nav class="dock" id="dock"><a href="#home" class="on">About</a><a href="#journey">Journey</a><a href="#projects">Projects</a><a href="#stack">Skills</a><a href="#achievements">Awards</a><a href="#online">Online</a><a href="#fin">Contact</a></nav>
+<nav class="dock" id="dock" aria-label="Sections"><a class="on" href="#home" aria-label="Home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg><span>Home</span></a><a href="#journey" aria-label="Journey"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M3 13h18"/></svg><span>Journey</span></a><a href="#projects" aria-label="Projects"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.7-.9l-.8-1.2A2 2 0 0 0 7.9 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2z"/><path d="m10 11-2 2 2 2M14 11l2 2-2 2"/></svg><span>Projects</span></a><a href="#stack" aria-label="Skills"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="3"/><path d="m7 9 3 3-3 3M13 15h4"/></svg><span>Skills</span></a><a href="#achievements" aria-label="Awards"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="9" r="6"/><path d="m8.5 14-1.5 7 5-3 5 3-1.5-7"/></svg><span>Awards</span></a><a href="#online" aria-label="Online"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg><span>Online</span></a><a href="https://www.linkedin.com/in/harshita-parsendiya-161252334" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg><span>LinkedIn</span></a><a href="https://github.com/harshiiii18" target="_blank" rel="noopener" aria-label="GitHub"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg><span>GitHub</span></a><a href="#fin" aria-label="Contact"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg><span>Contact</span></a></nav>
 
 <button id="srch" type="button" aria-label="Open search">Search <kbd>Ctrl K</kbd></button>
 <div id="pal" aria-hidden="true"><div class="pbox" role="dialog" aria-label="Search"><input id="pin" placeholder="Search sections and projects" autocomplete="off" aria-label="Search"><div id="pls"></div></div></div>
@@ -923,7 +936,7 @@ document.querySelectorAll(".card").forEach(function(c){c.addEventListener("point
 var P=[
 ["CrazyThing","crazy-thing.vercel.app","https://crazy-thing.vercel.app/","https://github.com/harshiiii18/CrazyThing","#2563eb","#7c3aed","Full-stack C2C marketplace with listings, cart, a 13-state order lifecycle, a seller dashboard and Razorpay (test mode) checkout secured by HMAC-SHA256 verification.",["React","Redux Toolkit","Node.js","Express","MongoDB","Razorpay"],"images/crazything.png"],
 ["SmartIntern","smartintern-three.vercel.app","https://smartintern-three.vercel.app/","https://github.com/harshiiii18/SmartIntern","#059669","#0891b2","AI-powered internship discovery and tracking with resume parsing, match scoring and a themeable dark/light Kanban board with protected routes.",["React","Vite","Node.js","Express","MongoDB"],"images/smartintern.png"],
-["ConnectSphere","connectsphere-teal.vercel.app","https://connectsphere-teal.vercel.app/signup","https://github.com/harshiiii18/connectsphere","#db2777","#f97316","MERN real-time chat app with JWT authentication, Socket.IO live messaging, online presence and typing indicators.",["React","Node.js","Express","MongoDB","Socket.IO","JWT"],"images/connectsphere.png"],
+["ConnectSphere","connectsphere-teal.vercel.app","https://connectsphere-teal.vercel.app/","https://github.com/harshiiii18/connectsphere","#db2777","#f97316","MERN real-time chat app with JWT authentication, Socket.IO live messaging, online presence and typing indicators.",["React","Node.js","Express","MongoDB","Socket.IO","JWT"],"images/connectsphere.png"],
 ["Zerodha Clone","zerodha-ruddy.vercel.app","https://zerodha-ruddy.vercel.app/","https://github.com/harshiiii18/zerodha","#0f172a","#2563eb","Front-end clone of a stock trading dashboard, replicating a dense, data-heavy UI with reusable React components and responsive layouts.",["React"],"images/zerodha.png"],
 ["DocMind","github.com/harshiiii18/DocMind","https://github.com/harshiiii18/DocMind","https://github.com/harshiiii18/DocMind","#059669","#7c3aed","In progress: a LangGraph chatbot (OpenAI chat model, Streamlit UI) growing into a document Q&A assistant.",["Python","LangGraph","LangChain","OpenAI","Streamlit"],"images/docmind.png"]];
 /* project showcase: stacking cards */
@@ -955,6 +968,7 @@ P.forEach(function(d,i){var live=d[2]!=d[3]?d[2]:"",c=document.createElement("ar
  ps.appendChild(c);PC.push(c);fio.observe(c)});
 function stackUpd(){var act=0,desk=innerWidth>=800;PC.forEach(function(c,i){var t=c.getBoundingClientRect().top;if(t<innerHeight*.8)c.classList.add("in");if(t<=innerHeight*.45)act=i;c.style.setProperty("--bx",((t-innerHeight*.5)*.12)+"px");if(desk&&i<PC.length-1){var nt=PC[i+1].getBoundingClientRect().top,k=Math.max(0,Math.min(1,(innerHeight*.95-nt)/(innerHeight*.55)));c.style.transform="scale("+(1-k*.07)+")";c.style.setProperty("--dk",(k*.55).toFixed(2))}});PB.forEach(function(b,i){b.classList.toggle("on",i==act)})}
 /* where I live online: real profiles */
+var PIC="images/harshita.png";
 var tabs=$("#tabs"),pan=$("#panels");
 function tabHTML(n,c,ini){return'<i class="fav" style="background:'+c+'">'+ini+'</i><span>'+n+'</span>'}
 function E(t,c,x){var e=document.createElement(t);if(c)e.className=c;if(x!=null)e.textContent=x;return e}
@@ -971,7 +985,7 @@ function cap(x){return x.replace(/\b\w/g,function(c){return c.toUpperCase()})}
 PR.forEach(function(d,i){var b=E("button","tab"+(i?"":" on"));b.style.setProperty("--c",d[1]);b.innerHTML=tabHTML(d[0],d[1],d[2]);tabs.appendChild(b);
  var s=E("div","panel sp"+(i?"":" on"));s.style.setProperty("--ac",d[1]);
  s.innerHTML='<div class="sbanner" style="background:'+d[6]+'"></div><div class="sav"><img alt="" onerror="this.remove()">H</div><a class="sopen" target="_blank" rel="noopener"></a><div class="sinfo"><h3></h3><p class="sh"></p><p class="sm"></p></div><div class="pfb"><div class="tiles"></div><div class="pfx"></div></div><div class="pff"><i></i><span></span></div>';
- var av=s.querySelector(".sav img");av.src=d[7]||"images/harshita.png";
+ var av=s.querySelector(".sav img");av.src=d[7]||PIC;
  var H3=s.querySelector("h3"),SH=s.querySelector(".sh"),SM=s.querySelector(".sm"),TL=s.querySelector(".tiles"),PX=s.querySelector(".pfx"),PF=s.querySelector(".pff span");
  var so=s.querySelector(".sopen");so.href=d[4];so.textContent=d[5];
  function foot(t,live){PF.textContent=t;s.querySelector(".pff").classList.toggle("live",!!live)}
@@ -1002,7 +1016,7 @@ PR.forEach(function(d,i){var b=E("button","tab"+(i?"":" on"));b.style.setPropert
   var bd=E("div","bdg");[["contest/silver","Contest Contender · Silver","25 contests"],["problem/silver","Problem Solver · Silver","250 problems"],["streak/bronze","Daily Streak · Bronze","5-day streak"]].forEach(function(x){var c=E("div","bd");var im=E("img");im.alt="";im.src="https://cdn.codechef.com/images/badges/"+x[0]+".svg";im.onerror=function(){im.remove()};c.appendChild(im);var t=E("div");t.appendChild(E("b",null,x[1]));t.appendChild(E("small",null,x[2]));c.appendChild(t);bd.appendChild(c)});PX.appendChild(bd);
   foot("Snapshot · Nov 2026",false)}
  pan.appendChild(s);
- var an=E("a","spa");an.href=d[4];an.target="_blank";an.rel="noopener";an.setAttribute("aria-label","Open "+d[0]);an.innerHTML='<img alt="" draggable="false"><span class="spv"></span><span class="spt">Static preview</span>';an.querySelector(".spv").textContent=d[5];
+ var an=E("a","spa");an.href=d[4];an.target="_blank";an.rel="noopener";an.setAttribute("aria-label","Open "+d[0]);an.innerHTML='<img alt="" draggable="false"><span class="spv"></span><span class="spt">Screenshot</span>';an.querySelector(".spv").textContent=d[5];
  var im2=an.querySelector("img");im2.alt=d[0]+" profile preview";im2.onerror=function(){an.remove()};im2.src="images/"+d[0].toLowerCase()+".png";s.appendChild(an);
  b.addEventListener("click",function(){document.querySelectorAll(".tab,.panel").forEach(function(n){n.classList.remove("on")});b.classList.add("on");s.classList.add("on");set(i)})});
 var URLS=PR.map(function(d){return[d[3],d[4]]});function set(i){$("#urlt").textContent="https://"+URLS[i][0];$("#urla").href=URLS[i][1]}set(0);
@@ -1044,15 +1058,13 @@ addEventListener("click",function(ev){if(ev.target.closest("a,button,input,texta
 addEventListener("mouseleave",function(){i=-1e3;a=-1e3});
 addEventListener("resize",function(){d();u()})})();
 /* scroll: progress, browser tilt, dock */
-var links=document.querySelectorAll("#dock a"),secs=[].map.call(links,function(a){return $(a.getAttribute("href"))});
+var links=document.querySelectorAll("#dock a[href^='#']"),secs=[].map.call(links,function(a){return $(a.getAttribute("href"))});
 var BG=[].slice.call(document.querySelectorAll("section[data-bg]"));
 function onS(){BG.forEach(function(e){e.style.setProperty("--sx",(e.getBoundingClientRect().top*.35)+"px")});finUpd();stackUpd();var h=document.documentElement.scrollHeight-innerHeight;var hs=Math.min(scrollY,innerHeight);nm.style.transform="translateY("+hs*.22+"px)";nm.style.opacity=Math.max(0,1-hs/(innerHeight*.8));$("#prog").style.width=(scrollY/h*100)+"%";
  var r=br.getBoundingClientRect(),k=Math.max(0,Math.min(1,(innerHeight-r.top)/(innerHeight*.8)));br.style.setProperty("--rx",(18-18*k)+"deg");br.style.setProperty("--sc",.94+.06*k);
  var c=0;secs.forEach(function(s,i){if(s&&s.getBoundingClientRect().top<innerHeight*.45)c=i});links.forEach(function(a,i){a.classList.toggle("on",i===c)})}
 addEventListener("scroll",onS,{passive:true});onS();
 /* dock magnification */
-var dock=$("#dock");dock.addEventListener("pointermove",function(e){links.forEach(function(a){var r=a.getBoundingClientRect(),d=Math.abs(e.clientX-(r.left+r.width/2)),s=1+Math.max(0,1-d/90)*.35;a.style.transform="scale("+s+")"})});
-dock.addEventListener("pointerleave",function(){links.forEach(function(a){a.style.transform=""})});
 /* finale */
 var FN,F1,F2;
 var finT=0,finC=0,finRun=false;
